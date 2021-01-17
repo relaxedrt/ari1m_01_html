@@ -11,9 +11,8 @@ background-color:yellow;
 ">
 Resultado
 </div>
+<image heigth=20% src= "hexagono.jpg">
 <script>
-//alert('hola mundo')
-//console.log('hola otra vez')
 function calcular(){
 	l=document.getElementById("l").value;
 	n=document.getElementById("n").value;
@@ -22,14 +21,18 @@ function calcular(){
 	}calcular();
 </script>
 <?php
-if(isset($_GET)) print_r($_GET);
+if(isset($_GET['l'])){
+			$l=$_GET['l'];
+			$n=$_GET['n'];
+	echo 'resultado:' . ($l/(2*tan(M_PI/$n)));
+		}
 ?>
 <h1> Ejercicio 2 <h1/>
 <h2> Se quiere construir un jardín de 1 m de ancho alrededor de una fuente circular de 4 m de diámetro. ¿Qué superficie ocupa la fuente? </h2>
 <form>
-Diametro<input id="d" name="d" placeholder="diametro fuente" value="4" onkeyup="calcular()" />
-Ancho<input id="a" name="a" placeholder="ancho alrededor" value="1" onkeyup="calcular()"/>
-<button onclick="calcular()"> Calcular </button>
+Diametro<input id="d" name="d" placeholder="diametro fuente" value="4" onkeyup="calcular2()" />
+Ancho<input id="a" name="a" placeholder="ancho alrededor" value="1" onkeyup="calcular2()"/>
+<button onclick="calcular2()"> Calcular </button>
 </form>
 <div id="perimetro" style="
 padding:20px;
@@ -37,25 +40,28 @@ background-color:green;
 ">
 Resultado 
 </div>
+<image heigth=20% src= "fuente.jpg">
 <script>
-//alert('hola mundo')
-//console.log('hola otra vez')
 function calcular(){
 	d=document.getElementById("d").value;
 	a=document.getElementById("a").value;
-	perimetro=4*((2*a)+d);
+	perimetro=Math_PI*((d/2)**2);
 	document.getElementById('perimetro').innerHTML= perimetro+' m';
 	}calcular();
 </script>
 <?php
-if(isset($_GET)) print_r($_GET);
+if(isset($_GET['d'])){
+			$d=$_GET['d'];
+			$a=$_GET['a'];
+	echo 'resultado2:' . (M_PI(pow($d/2),2));
+		}
 ?>
 <h1> Ejercicio 3 <h1/>
 <h2> En un corral hay conejos y gallinas. Si contamos las cabezas hay 30, si contamos las patas hay 84. ¿Cuántos conejos y cuántas gallinas hay? </h2>
 <form>
-Diametro<input id="c" name="c" placeholder="cabezas" value="30" onkeyup="calcular()" />
-Ancho<input id="p" name="p" placeholder="patas" value="84" onkeyup="calcular()"/>
-<button onclick="calcular()"> Calcular </button>
+Diametro<input id="c" name="c" placeholder="cabezas" value="30" onkeyup="calcular3()" />
+Ancho<input id="p" name="p" placeholder="patas" value="84" onkeyup="calcular3()"/>
+<button onclick="calcular3()"> Calcular </button>
 </form>
 <div id="g" style="
 padding:20px;
@@ -82,13 +88,19 @@ function calcular(){
 	}calcular();
 </script>
 <?php
-if(isset($_GET)) print_r($_GET);
+if(isset($_GET['c'])){
+			$c=$_GET['c'];
+			$p=$_GET['p'];
+			$r=$_GET['r'];
+	echo 'conejos:' . ($p-(2*c))/2;
+	echo 'gallinas:' . ($c-$r);
+		}
 ?>
 <h1> Ejercicio 4 <h1/>
 <h2> Se dispone de un cartón cuadrado de 50 cm de lado para construir una caja sin tapa a partir de ese cartón. Para ello, se corta un cuadrado de x cm de lado en cada una de las esquinas. Halla el valor de x para que el volumen de la caja sea máximo y calcula dicho volumen </h2>
 <form>
-lado<input id="l" name="l" placeholder="lado" value="50" onkeyup="calcular()" />
-<button onclick="calcular()"> Calcular </button>
+lado<input id="l" name="l" placeholder="lado" value="50" onkeyup="calcular4()" />
+<button onclick="calcular4()"> Calcular </button>
 </form>
 <div id="x" style="
 padding:20px;
@@ -101,9 +113,9 @@ padding:20px;
 background-color:pink;
 ">
 </div>
+<image heigth=20% src= "caja.jpg">
 <script>
-//alert('hola mundo')
-//console.log('hola otra vez')
+
 function calcular(){
 	l=document.getElementById("l").value;
 	x= 1/(12*l);
@@ -113,5 +125,11 @@ function calcular(){
 	}calcular();
 </script>
 <?php
-if(isset($_GET)) print_r($_GET);
-?>
+								if(isset (
+						$_GET['l'])) {$l=$_GET['l'];
+						$x=12/(24*$l);
+						$vmax=$x*pow(($l-(2*$x)),2);
+						$vmax=round($vmax,2);
+						echo 'Resultado: x= '.$x.' cm, y volumen= '.$vmax.' cm³.';
+						}
+					?>
