@@ -1,7 +1,7 @@
 <h1> Ejercicio 1 <h1/>
 <h2> Halla la apotema de un hexágono regular de 20 cm de lado </h2>
 <form>
-Lado<input id="l" name="l" placeholder="lado" value="20" onkeyup="calcular()" />
+Lado<input id="l" name="l" placeholder="lado" value="20" onkeyup="()" />
 Nº Lados<input id="n" name="n" placeholder="numero lados" value="6" onkeyup="calcular()"/>
 <button onclick="calcular()"> Calcular </button>
 </form>
@@ -42,25 +42,25 @@ Resultado
 </div>
 <image heigth=20% src= "fuente.jpg">
 <script>
-function calcular(){
+function calcular2(){
 	d=document.getElementById("d").value;
 	a=document.getElementById("a").value;
 	perimetro=Math_PI*((d/2)**2);
 	document.getElementById('perimetro').innerHTML= perimetro+' m';
-	}calcular();
+	}calcular2();
 </script>
 <?php
 if(isset($_GET['d'])){
 			$d=$_GET['d'];
 			$a=$_GET['a'];
-	echo 'resultado2:' . (M_PI(pow($d/2),2));
+	echo 'resultado2:' . (pi(pow($d/2),(2)));
 		}
 ?>
 <h1> Ejercicio 3 <h1/>
 <h2> En un corral hay conejos y gallinas. Si contamos las cabezas hay 30, si contamos las patas hay 84. ¿Cuántos conejos y cuántas gallinas hay? </h2>
 <form>
-Diametro<input id="c" name="c" placeholder="cabezas" value="30" onkeyup="calcular3()" />
-Ancho<input id="p" name="p" placeholder="patas" value="84" onkeyup="calcular3()"/>
+Cabezas<input id="c" name="c" placeholder="cabezas" value="30" onkeyup="calcular3()" />
+Patas<input id="p" name="p" placeholder="patas" value="84" onkeyup="calcular3()"/>
 <button onclick="calcular3()"> Calcular </button>
 </form>
 <div id="g" style="
@@ -78,28 +78,28 @@ Resultado
 <script>
 //alert('hola mundo')
 //console.log('hola otra vez')
-function calcular(){
+function calcular3(){
 	c=document.getElementById("c").value;
 	p=document.getElementById("p").value;
 	r=(p-(2*c))/2;
 	g=c-r;
 	document.getElementById('r').innerHTML= r +' conejos';
 	document.getElementById('g').innerHTML= g +' gallinas';
-	}calcular();
+	}calcular3();
 </script>
 <?php
 if(isset($_GET['c'])){
 			$c=$_GET['c'];
 			$p=$_GET['p'];
 			$r=$_GET['r'];
-	echo 'conejos:' . ($p-(2*c))/2;
+	echo 'conejos:' . ($p-(2*$c))/2;
 	echo 'gallinas:' . ($c-$r);
 		}
 ?>
 <h1> Ejercicio 4 <h1/>
 <h2> Se dispone de un cartón cuadrado de 50 cm de lado para construir una caja sin tapa a partir de ese cartón. Para ello, se corta un cuadrado de x cm de lado en cada una de las esquinas. Halla el valor de x para que el volumen de la caja sea máximo y calcula dicho volumen </h2>
 <form>
-lado<input id="l" name="l" placeholder="lado" value="50" onkeyup="calcular4()" />
+lado<input id="lad" name="lad" placeholder="lado" value="50" onkeyup="calcular4()" />
 <button onclick="calcular4()"> Calcular </button>
 </form>
 <div id="x" style="
@@ -116,19 +116,19 @@ background-color:pink;
 <image heigth=20% src= "caja.jpg">
 <script>
 
-function calcular(){
-	l=document.getElementById("l").value;
-	x= 1/(12*l);
-	vmax= x*(l-2*x)**2;
+function calcular4(){
+	lad=document.getElementById("lad").value;
+	x= 1/(12*lad);
+	vmax= x*(lad-2*x)**2;
 	document.getElementById('x').innerHTML= x+' cm';
 	document.getElementById('vmax').innerHTML= vmax+' cm^3';
-	}calcular();
+	}calcular4();
 </script>
 <?php
 								if(isset (
-						$_GET['l'])) {$l=$_GET['l'];
-						$x=12/(24*$l);
-						$vmax=$x*pow(($l-(2*$x)),2);
+						$_GET['lad'])) {$lad=$_GET['l'];
+						$x=12/(24*$lad);
+						$vmax=$x*pow(($lad-(2*$x)),2);
 						$vmax=round($vmax,2);
 						echo 'Resultado: x= '.$x.' cm, y volumen= '.$vmax.' cm³.';
 						}
